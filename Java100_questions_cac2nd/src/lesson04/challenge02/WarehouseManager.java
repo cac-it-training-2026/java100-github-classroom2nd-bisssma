@@ -95,21 +95,23 @@ public class WarehouseManager {
 
 		System.out.print("データ型を選んでください（1...文字、2...文字列、3...数値）＞");
 
-
 		//ここに入力処理を記述する。
-
+		String dataStr = br.readLine();
+		int data = Integer.parseInt(dataStr);
 
 		System.out.print("\n要素数を選んでください（1...1個、2...2個、3...3個）＞");
 
-
 		//ここに入力処理を記述する。
-
-
-		boolean errFlag = false;
-
+		String elemStr = br.readLine();
+		int elem = Integer.parseInt(elemStr);
 
 		//ここに入力値の範囲チェック処理を記述する。
-
+		boolean errFlag = false;
+		if (data < 1 || elem > 3) {
+			errFlag = true;
+		} else if (elem < 1 || elem > 3) {
+			errFlag = true;
+		}
 
 		if (!errFlag) {
 			System.out.println("\nZ先輩：");
@@ -126,10 +128,34 @@ public class WarehouseManager {
 			String[] strArray = null;
 			int[] intArray = null;
 
-
 			//ここに入力値による分岐および配列要素数の確定、
 			//値の代入処理を記述する。
-
+			if (data == 1) {
+				if (elem == 1) {
+					charArray = new char[1];
+					charArray[0] = 'b';
+				} else if (elem == 2) {
+					charArray = new char[] { 'i', 's' };
+				} else {
+					charArray = new char[] { 'i', 's', 'm' };
+				}
+			} else if (data == 2) {
+				if (elem == 1) {
+					strArray = new String[] { "bisma" };
+				} else if (elem == 2) {
+					strArray = new String[] { "bisma", "khan" };
+				} else {
+					strArray = new String[] { "bisma", "khan", "CAC" };
+				}
+			} else {
+				if (elem == 1) {
+					intArray = new int[] { 1 };
+				} else if (elem == 2) {
+					intArray = new int[] { 1, 2 };
+				} else {
+					intArray = new int[] { 1, 2, 3 };
+				}
+			}
 
 			System.out.println("Yさん：");
 			System.out.println("...出来ました。\n");
@@ -139,9 +165,20 @@ public class WarehouseManager {
 
 			System.out.println("Yさん：");
 
-
 			//ここに入力値による分岐および配列要素の表示処理を記述する。
-
+			if (data == 1) {
+				for (char c : charArray) {
+					System.out.print(c + ",");
+				}
+			} else if (data == 2) {
+				for (String s : strArray) {
+					System.out.print(s + ",");
+				}
+			} else {
+				for (int i : intArray) {
+					System.out.print(i + ",");
+				}
+			}
 
 			System.out.println("です。\n");
 
