@@ -40,11 +40,28 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 
-		int[] ABKosanArray = new int[5];
-
+		int[] luggage = new int[5];
 
 		//ここに重複チェックおよび値の代入処理を記述する
+		int inputNum = 0;
+		boolean loopFlag = false;
 
+		for (int i = 0; i < luggage.length; i++) {
+			do {
+				loopFlag = false;
+				inputNum = (int) (Math.random() * 10) % 5 + 1;
+
+				for (int j = 0; j < luggage.length; j++) {
+					if (luggage[j] == inputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+
+			} while (loopFlag);
+
+			luggage[i] = inputNum;
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産の荷物の並べ替えをお願いします。\n");
@@ -53,35 +70,49 @@ public class WarehouseManager {
 		System.out.println("はい、");
 		System.out.println("並べ替え前の状態は、");
 
-		for (int i = 0; i < ABKosanArray.length; i++) {
-			System.out.print(ABKosanArray[i]);
-			if (i != (ABKosanArray.length - 1)) {
+		for (int i = 0; i < luggage.length; i++) {
+			System.out.print(luggage[i]);
+			if (i != (luggage.length - 1)) {
 				System.out.print(",");
 			}
 		}
 		System.out.println("\nです。\n");
-
 
 		//ここに昇順にソートする処理を記述する
-
+		for (int i = 0; i < luggage.length - 1; i++) {
+			for (int j = i + 1; j < luggage.length; j++) {
+				if (luggage[i] > luggage[j]) {
+					int temp = luggage[i];
+					luggage[i] = luggage[j];
+					luggage[j] = temp;
+				}
+			}
+		}
 
 		System.out.println("小さい順に並べ替えた後の状態は、");
-		for (int i = 0; i < ABKosanArray.length; i++) {
-			System.out.print(ABKosanArray[i]);
-			if (i != (ABKosanArray.length - 1)) {
+		for (int i = 0; i < luggage.length; i++) {
+			System.out.print(luggage[i]);
+			if (i != (luggage.length - 1)) {
 				System.out.print(",");
 			}
 		}
 		System.out.println("\nです。\n");
 
-
 		//ここに降順にソートする処理を記述する
-
+		for (int i = 0; i < luggage.length - 1; i++) {
+			for (int j = i + 1; j < luggage.length; j++) {
+				if (luggage[i] < luggage[j]) {
+					int temp = luggage[i];
+					luggage[i] = luggage[j];
+					luggage[j] = temp;
+				}
+			}
+		}
 
 		System.out.println("大きい順に並べ替えた後の状態は、");
-		for (int i = 0; i < ABKosanArray.length; i++) {
-			System.out.print(ABKosanArray[i]);
-			if (i != (ABKosanArray.length - 1)) {
+		for (int i = 0; i < luggage.length; i++) {
+			System.out.print(luggage[i]);
+			if (i != (luggage.length - 1)) {
 				System.out.print(",");
 			}
 		}
