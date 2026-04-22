@@ -43,38 +43,56 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 //ここにSpaceshipクラスを記述する
+class Spaceship {
+	private double fuel;
 
+	public double getFuel() {
+		return fuel;
+	}
+
+	public void setFuel(double fuel) {
+		this.fuel = fuel;
+	}
+
+	public boolean checkFuel(double fuelNum) {
+		boolean isCheck = false;
+		double fuel = Math.floor(fuelNum);
+		if (fuel > 12) {
+			isCheck = true;
+		} else {
+			isCheck = false;
+		}
+		return isCheck;
+	}
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        System.out.println("宇宙飛行士：");
-        System.out.println("そろそ地球に帰りたくなってきたな～。");
-        System.out.println("燃料を調べてみるか。\n");
+		System.out.println("宇宙飛行士：");
+		System.out.println("そろそ地球に帰りたくなってきたな～。");
+		System.out.println("燃料を調べてみるか。\n");
 
-        System.out.print("燃料を入力してください＞");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String fuelStr = br.readLine();
-        double fuelNum = Double.parseDouble(fuelStr);
+		System.out.print("燃料を入力してください＞");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String fuelStr = br.readLine();
+		double fuelNum = Double.parseDouble(fuelStr);
 
+		//ここに適切な処理を記述する
+		Spaceship spaceship = new Spaceship();
 
-        //ここに適切な処理を記述する
+		boolean isCheck = false;
 
+		//ここに適切な処理を記述する
+		isCheck = spaceship.checkFuel(fuelNum);
 
-        boolean isCheck = false;
-
-
-        //ここに適切な処理を記述する
-
-
-        System.out.println("\n宇宙飛行士：");
-        if(isCheck){
-            System.out.println("よし！足りてる足りてる。");
-        } else {
-            System.out.println("えっ！足りてないよ。どうしよう。。。");
-        }
-    }
+		System.out.println("\n宇宙飛行士：");
+		if (isCheck) {
+			System.out.println("よし！足りてる足りてる。");
+		} else {
+			System.out.println("えっ！足りてないよ。どうしよう。。。");
+		}
+	}
 }
