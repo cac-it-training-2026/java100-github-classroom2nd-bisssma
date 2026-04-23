@@ -37,11 +37,28 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 
-		int[] ABKosanArray = new int[5];
-
+		int[] luggage = new int[5];
 
 		//ここに重複チェックおよび値の代入処理を記述する
+		int inputNum = 0;
+		boolean loopFlag = false;
 
+		for (int i = 0; i < luggage.length; i++) {
+			do {
+				loopFlag = false;
+				inputNum = (int) (Math.random() * 10) % 5 + 1;
+
+				for (int j = 0; j < luggage.length; j++) {
+					if (luggage[j] == inputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+
+			} while (loopFlag);
+
+			luggage[i] = inputNum;
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産の荷物の入れ替えをお願いします。\n");
@@ -49,22 +66,43 @@ public class WarehouseManager {
 		System.out.println("Yさん：");
 		System.out.println("はい、");
 		System.out.println("入れ替え前の状態は、");
-		for (int i = 0; i < ABKosanArray.length; i++) {
-			System.out.print(ABKosanArray[i]);
-			if (i != (ABKosanArray.length - 1)) {
+		for (int i = 0; i < luggage.length; i++) {
+			System.out.print(luggage[i]);
+			if (i != (luggage.length - 1)) {
 				System.out.print(",");
 			}
 		}
 		System.out.println("\nです。\n");
 
-
 		//ここに値の入れ替え処理を記述する
-
+		int[] changeIndexArray = new int[4];
+		for (int i = 0; i < luggage.length; i++) {
+			if (luggage[i] == 1) {
+				changeIndexArray[0] = i;
+			} else if (luggage[i] == 2) {
+				changeIndexArray[1] = i;
+			} else if (luggage[i] == 3) {
+				changeIndexArray[2] = i;
+			} else if (luggage[i] == 4) {
+				changeIndexArray[3] = i;
+			}
+		}
+		for (int i = 0; i < luggage.length; i++) {
+			if (changeIndexArray[0] == i) {
+				luggage[i] = 3;
+			} else if (changeIndexArray[1] == i) {
+				luggage[i] = 4;
+			} else if (changeIndexArray[2] == i) {
+				luggage[i] = 1;
+			} else if (changeIndexArray[3] == i) {
+				luggage[i] = 2;
+			}
+		}
 
 		System.out.println("入れ替え後の状態は、");
-		for (int i = 0; i < ABKosanArray.length; i++) {
-			System.out.print(ABKosanArray[i]);
-			if (i != (ABKosanArray.length - 1)) {
+		for (int i = 0; i < luggage.length; i++) {
+			System.out.print(luggage[i]);
+			if (i != (luggage.length - 1)) {
 				System.out.print(",");
 			}
 		}
