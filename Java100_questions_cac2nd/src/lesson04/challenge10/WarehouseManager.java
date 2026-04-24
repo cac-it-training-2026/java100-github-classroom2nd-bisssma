@@ -61,12 +61,30 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 
-
 		//ここに必要な配列の宣言を記述する。
-
+		int[] MQArrayC = new int[5];
+		int[] MQArrayD = new int[5];
+		int[] MQArrayE = new int[5];
 
 		//ここに配列に値を代入する処理を記述する。(要素はランダム)
+		int[][] MQArrayAll = new int[3][5];
+		MQArrayAll[0] = MQArrayC;
+		MQArrayAll[1] = MQArrayD;
+		MQArrayAll[2] = MQArrayE;
 
+		for (int i = 0; i < MQArrayAll.length; i++) {//どのコンテナ群（C, D, E）を対象にするか
+			for (int j = 0; j < MQArrayAll[0].length; j++) {//その群の中の何番目の箱（0〜4番目）を対象にするか
+				int rand = (int) (Math.random() * 10) % 4;//空き箱かどうかの判定（1/4の確率）。0〜9の乱数を4で割った余り（0, 1, 2, 3のどれか）を算出
+				if (rand == 0) {//余りが0なら当たりとして、箱を0（空き）にする
+					MQArrayAll[i][j] = 0;
+				} else {
+					//荷物の中身を決定（1〜10の数値）
+					// それ以外（1, 2, 3の時）は、1〜10のランダムな数値を代入する
+					// % 10 で「0〜9」を作り、そこに + 1 して「1〜10」に調整
+					MQArrayAll[i][j] = (int) (Math.random() * 10) % 10 + 1;
+				}
+			}
+		}
 
 		System.out.println("E主任：");
 		System.out.println("MQ運送から預かった荷物の確認をお願いします。\n");
@@ -76,21 +94,33 @@ public class WarehouseManager {
 
 		System.out.print("C...");
 
-
 		//ここに配列Cの要素をすべて出力する処理を記述する。
-
+		for (int i = 0; i < MQArrayC.length; i++) {
+			System.out.print(MQArrayC[i]);
+			if (i != (MQArrayC.length - 1)) {//最後(インデックスが)の箱じゃない」なら、カンマを表示
+				System.out.print(", ");
+			}
+		}
 
 		System.out.print("\n\nD...");
 
-
 		//ここに配列Dの要素をすべて出力する処理を記述する。
-
+		for (int i = 0; i < MQArrayD.length; i++) {
+			System.out.print(MQArrayD[i]);
+			if (i != (MQArrayD.length - 1)) {
+				System.out.print(", ");
+			}
+		}
 
 		System.out.print("\n\nE...");
 
-
 		//ここに配列Eの要素をすべて出力する処理を記述する。
-
+		for (int i = 0; i < MQArrayE.length; i++) {
+			System.out.print(MQArrayE[i]);
+			if (i != (MQArrayE.length - 1)) {
+				System.out.print(", ");
+			}
+		}
 
 		System.out.println("\n\nです。\n");
 

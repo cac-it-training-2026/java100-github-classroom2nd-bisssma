@@ -99,9 +99,20 @@ public class WarehouseManager {
 
 		System.out.println("\n\nでした。直してきます...\n");
 
-
 		//ここに適切な値の挿入処理を記述する
+		//0の場所と現在の合計を調べる(1 + 2 + 3 + 4 + 5 = 15を利用する)
+		int targetIndex = 0;
+		int totalPoint = 0;
 
+		for (int i = 0; i < wonderfulArray.length; i++) {
+			if (wonderfulArray[i] == 0) {
+				targetIndex = i;// 0が入っている場所をメモ
+			} else {
+				totalPoint += wonderfulArray[i];// 0以外の数字を全部足していく
+			}
+		}
+
+		wonderfulArray[targetIndex] = (15 - totalPoint);//足りない数字を計算して埋める
 
 		System.out.println("Yさん：");
 		System.out.println("直してきました。\n");
