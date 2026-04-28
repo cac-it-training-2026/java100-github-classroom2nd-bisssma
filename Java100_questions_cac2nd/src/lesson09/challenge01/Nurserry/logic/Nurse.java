@@ -17,7 +17,7 @@ public class Nurse {
 
 	public void takeAttendance(NurserySchoolChild[] childs, int num) {
 
-		//ここに適切な処理を記述
+		//ここに適切な処理
 		try {
 			System.out.println(childs[num - 1].getName() + "は出席しています。");
 		} catch (ArrayIndexOutOfBoundsException e) {
