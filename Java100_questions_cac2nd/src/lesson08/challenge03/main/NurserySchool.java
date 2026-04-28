@@ -11,6 +11,8 @@
  */
 
 package lesson08.challenge03.main;
+import lesson08.challenge03.logic.Nurse;
+import lesson08.challenge03.logic.NurserySchoolChild;
 
 public class NurserySchool {
 

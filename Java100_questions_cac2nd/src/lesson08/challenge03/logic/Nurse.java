@@ -1,6 +1,6 @@
 package lesson08.challenge03.logic;
 
-class Nurse {
+public class Nurse {
 	private String name;
 
 	public Nurse(String name) {

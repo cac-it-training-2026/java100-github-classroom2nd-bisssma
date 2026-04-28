@@ -1,6 +1,6 @@
 package lesson08.challenge03.logic;
 
-class NurserySchoolChild {
+public class NurserySchoolChild {
 
 	private String name;
 
