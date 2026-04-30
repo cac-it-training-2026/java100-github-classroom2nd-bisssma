@@ -75,14 +75,35 @@ package lesson03.challenge10;
 
 public class Explorer {
 
-        public static void main(String[] args) {
+	public static void main(String[] args) {
 
-                System.out.println("隊長：");
-                System.out.println("滝の前に着いたよ！\n");
+		System.out.println("隊長：");
+		System.out.println("滝の前に着いたよ！\n");
 
+		//ここにfor文のネスト、if文を利用した処理を記述する。
+		// 外側のループ：13時から16時まで
+		for (int i = 13; i <= 16; i++) {
+			// 内側のループ：0分から45分まで「15分刻み(j += 15)」で回す
+			for (int j = 0; j < 60; j += 15) {
 
-                //ここにfor文のネスト、if文を利用した処理を記述する。
+				// 13:00, 13:15, 13:30 は表示しない（13:45から開始するため）
+				if (i == 13 && j <= 30) {
+					continue;
+				}
 
+				if (i == 16 && j == 30) {
+					// 16:30になった時の特別処理
+					System.out.println("隊長：\n16:30 時間になったよ\n");
+					System.out.println("滝の水流が弱くなりました。\n");
+					System.out.println("やったー！宝物だー！");
+					return; // 全ての処理を終了してメソッドを抜ける
+				}
 
-        }
+				// 通常の「待ち遠しい」表示
+				System.out.println("隊長：");
+				System.out.printf("%d:%02d 待ち遠しいな～%n%n", i, j);
+			}
+		}
+
+	}
 }

@@ -54,23 +54,59 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 //ここにAlphalianクラスを記述する
+class Alphalian {
+	private String name;
+
+	// コンストラクタ：オブジェクト生成された瞬間にランダムな名前（A〜E）を持つ
+	public Alphalian() {
+		String[] names = { "A", "B", "C", "D", "E" };
+		// 0.0〜9.9...の乱数を作り、5で割った余り（0〜4）をインデックスにする
+		int nameNum = (int) (Math.random() * 10) % 5;
+		this.name = names[nameNum];
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        boolean hitFlag = false;
+		boolean hitFlag = false;// 当たったかどうかを記憶する（初期値はハズレ）
 
+		//ここに適切な処理を記述する。
+		// 10人分のループ
+		for (int i = 0; i < 10; i++) {
+			System.out.println("名前を入れてください（A～E）＞");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			String guessName = reader.readLine();// ユーザーが入力した名前
 
-        //ここに適切な処理を記述する。
+			System.out.println("\nα星人：" + (i + 1) + "人目");
 
+			Alphalian aplalian = new Alphalian();// 毎回新しいα星人オブジェクトを作る（毎回名前がランダムに決まる）
+			String name = aplalian.getName();// α星人の本当の名前
 
-        if (hitFlag) {
-            System.out.println("当たったアルファ。α星にようこそアルファ。");
-        } else {
-            System.out.println("って言うか、お前やる気ないアルファ！");
-            System.out.println("とっとと出て行けアルファ！");
-        }
-    }
+			if (name.equals(guessName)) {//※文字列の比較は「==」ではなく「equals」を使う
+				hitFlag = true;// 当たったのでtrueに直す
+				break;// 正解したのでこれ以上、質問する必要なし！
+			} else {
+				System.out.println("おら、そんな名前じゃないアルファ！");
+				System.out.println(name + "が正解だアルファ！\n");
+			}
+		}
+
+		if (hitFlag) {//外れだとfalseのままでelseへ行く
+			System.out.println("当たったアルファ。α星にようこそアルファ。");
+		} else {
+			System.out.println("って言うか、お前やる気ないアルファ！");
+			System.out.println("とっとと出て行けアルファ！");
+		}
+	}
 
 }

@@ -27,34 +27,38 @@ package lesson07.challenge02;
 
 class Samurai {
 
-    void fight() {
-        System.out.println("戦うよ～。");
-    }
+	void fight() {
+		System.out.println("戦うよ～。");
+	}
 
 }
 
-
 //ここにRoninクラスを記述
-
+class Ronin extends Samurai {
+	void covered() {
+		System.out.println("傘張りするよ～。");
+	}
+}
 
 public class CastleTown {
 
-    public static void main(String[] args) {
-        System.out.println("侍は戦います。\n");
+	public static void main(String[] args) {
+		System.out.println("侍は戦います。\n");
 
-        System.out.println("侍1：");
+		System.out.println("侍1：");
 
-        Samurai samurai1 = new Samurai();
-        samurai1.fight();
+		Samurai samurai1 = new Samurai();
+		samurai1.fight();
 
-        System.out.println("\n浪人はそれに加えて傘張りもします。\n");
+		System.out.println("\n浪人はそれに加えて傘張りもします。\n");
 
-        System.out.println("浪人1：");
+		System.out.println("浪人1：");
 
+		//ここに必要な処理を記述
+		Ronin ronin1 = new Ronin();
+		ronin1.fight();
+		ronin1.covered();
 
-        //ここに必要な処理を記述
-
-
-    }
+	}
 
 }
