@@ -29,6 +29,7 @@
 
 package lesson09.challenge04.Nurserry.main;
 
+import lesson09.challenge04.Nurserry.Exception.CriticalConditionException;
 import lesson09.challenge04.Nurserry.logic.Nurse;
 import lesson09.challenge04.Nurserry.logic.NurserySchoolChild;
 
@@ -53,6 +54,13 @@ public class NurserySchool {
 		System.out.println(child3.getName() + "が登園しました。");
 
 		//ここに適切な処理を記述
+		try {
+			nurse1.takeTemperature(child1);
+			nurse2.takeTemperature(child2);
+			nurse3.takeTemperature(child3);
+		} catch (CriticalConditionException e) {
+			System.out.println("\nすぐに病院に行ってください。");
+		}
 
 	}
 }
